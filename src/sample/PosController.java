@@ -4,10 +4,11 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.Button;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
+
 import java.net.URL;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 
 
@@ -22,14 +23,17 @@ public class PosController implements Initializable{
     @FXML
     private Label change;
     @FXML
-    private Label barcode;
+    private TextArea barcode;
     @FXML
     private Button cash;
     @FXML
     private Button card;
     @FXML
     private Button barcodeBtn;
+
+    private Map<Integer, Product> productMap = new HashMap<>();
     int productCount=0;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) { // 바코드 리스트를 이때 만드는게 어떨까?
         cash.setOnAction(event -> clickCashBtn());
@@ -38,17 +42,19 @@ public class PosController implements Initializable{
     }
 
     public void clickCashBtn() {
-        System.out.println("1");
+        Dialog dialog = new Dialog();
+        dialog.setTitle("현금 결제");
+        dialog.show();
     }
 
     public void clickCardBtn() {
-        System.out.println("2");
+        Dialog dialog = new Dialog();
+        dialog.setTitle("카드 결제");
+        dialog.show();
     }
 
     public void clickBarcodeBtn() {
         String barcodeNumber = barcode.getText();
-
-
 
     }
 
