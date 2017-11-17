@@ -98,18 +98,19 @@
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="   매출 현황   ">
+          <Tab text="   매출 정보   ">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="50.0">
                      <children>
                         <TableView prefHeight="771.0" prefWidth="684.0">
                           <columns>
-                            <TableColumn prefWidth="232.0" text="물품 명" />
-                            <TableColumn minWidth="0.0" prefWidth="157.0" text="가격" />
-                            <TableColumn minWidth="0.0" prefWidth="137.0" text="수량" />
-                            <TableColumn minWidth="0.0" prefWidth="157.0" text="날짜" />
+                              <TableColumn minWidth="0.0" prefWidth="157.0" text="매출시각" />
+                              <TableColumn prefWidth="232.0" text="물품 명" />
+                              <TableColumn minWidth="0.0" prefWidth="157.0" text="가격" />
+                              <TableColumn minWidth="0.0" prefWidth="137.0" text="수량" />
                           </columns>
                         </TableView>
+                        <Button layoutX="712.0" layoutY="301.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="156.0" text="환불" />
                      </children></AnchorPane>
             </content>
         </Tab>
