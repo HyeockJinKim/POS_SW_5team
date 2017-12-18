@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PosController">
+<AnchorPane prefHeight="800.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.PosController">
    <children>
       <TabPane prefHeight="800.0" prefWidth="900.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -24,9 +24,9 @@
                            <children>
                               <TableView fx:id="counterTable" prefHeight="535.0" prefWidth="620.0">
                                 <columns>
-                                  <TableColumn prefWidth="387.0" text="물품 명" />
-                                  <TableColumn minWidth="0.0" prefWidth="126.0" text="가격" />
-                                    <TableColumn prefWidth="106.0" text="수량" />
+                                  <TableColumn fx:id="calname" prefWidth="387.0" text="물품 명" />
+                                  <TableColumn fx:id="calprice" minWidth="0.0" prefWidth="126.0" text="가격" />
+                                    <TableColumn fx:id="calquan" prefWidth="106.0" text="수량" />
                                 </columns>
                               </TableView>
                               <VBox prefHeight="560.0" prefWidth="279.0">
@@ -78,7 +78,7 @@
                               </VBox>
                            </children>
                         </HBox>
-                        <VBox layoutX="42.0" layoutY="628.0" prefHeight="80.0" prefWidth="400.0" style="-fx-background-color: #ffffff;">
+                        <VBox layoutX="13.0" layoutY="628.0" prefHeight="80.0" prefWidth="312.0" style="-fx-background-color: #ffffff;">
                            <children>
                               <Label prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #eeeeee; -fx-font-size: 15; -fx-border-color: #aaaaaa; -fx-border-width: 1 1 1 1;" text="  바코드 입력">
                                  <VBox.margin>
@@ -95,21 +95,36 @@
                         <Button fx:id="barcodeBtn" layoutX="462.0" layoutY="628.0" mnemonicParsing="false" prefHeight="80.0" prefWidth="78.0" text="바코드입력" />
                         <Button fx:id="cash" layoutX="579.0" layoutY="630.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="115.0" text="현금 결제" />
                         <Button fx:id="card" layoutX="727.0" layoutY="630.0" mnemonicParsing="false" prefHeight="76.0" prefWidth="115.0" text="카드 결제" />
+                        <VBox layoutX="334.0" layoutY="628.0" prefHeight="80.0" prefWidth="116.0" style="-fx-background-color: #ffffff;">
+                           <children>
+                              <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #eeeeee; -fx-font-size: 15; -fx-border-color: #aaaaaa; -fx-border-width: 1 1 1 1;" text="수량">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </Label>
+                              <TextArea fx:id="quanti" layoutX="10.0" layoutY="10.0" prefHeight="40.0" prefWidth="400.0" style="-fx-background-color: #ffffff; -fx-font-size: 15; -fx-border-color: #aaaaaa; -fx-border-width: 0 1 1 1;">
+                                 <padding>
+                                    <Insets right="10.0" />
+                                 </padding>
+                              </TextArea>
+                           </children>
+                        </VBox>
                      </children></AnchorPane>
             </content>
           </Tab>
-          <Tab text="   매출 현황   ">
+          <Tab text="   매출 정보   ">
             <content>
                 <AnchorPane minHeight="0.0" minWidth="50.0">
                      <children>
                         <TableView prefHeight="771.0" prefWidth="684.0">
                           <columns>
-                            <TableColumn prefWidth="232.0" text="물품 명" />
-                            <TableColumn minWidth="0.0" prefWidth="157.0" text="가격" />
-                            <TableColumn minWidth="0.0" prefWidth="137.0" text="수량" />
-                            <TableColumn minWidth="0.0" prefWidth="157.0" text="날짜" />
+                              <TableColumn minWidth="0.0" prefWidth="157.0" text="매출시각" />
+                              <TableColumn prefWidth="232.0" text="물품 명" />
+                              <TableColumn minWidth="0.0" prefWidth="157.0" text="가격" />
+                              <TableColumn minWidth="0.0" prefWidth="137.0" text="수량" />
                           </columns>
                         </TableView>
+                        <Button fx:id="refund" layoutX="712.0" layoutY="500.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="156.0" text="환불" />
                      </children></AnchorPane>
             </content>
         </Tab>
@@ -117,11 +132,11 @@
             <content>
                 <AnchorPane minHeight="0.0" minWidth="50.0">
                     <children>
-                        <TableView prefHeight="771.0" prefWidth="900.0">
+                        <TableView fx:id="productView" prefHeight="771.0" prefWidth="900.0">
                             <columns>
-                                <TableColumn prefWidth="376.0" text="물품 명" />
-                                <TableColumn minWidth="0.0" prefWidth="205.0" text="가격" />
-                                <TableColumn minWidth="0.0" prefWidth="318.0" text="바코드" />
+                                <TableColumn fx:id="productNameColumn" prefWidth="376.0" text="물품 명" />
+                                <TableColumn fx:id="PriceColumn" minWidth="0.0" prefWidth="205.0" text="가격" />
+                                <TableColumn fx:id="barcodeColumn" minWidth="0.0" prefWidth="318.0" text="바코드" />
                             </columns>
                         </TableView>
                     </children>
