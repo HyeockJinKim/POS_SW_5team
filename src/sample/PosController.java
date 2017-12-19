@@ -1,10 +1,12 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -76,6 +78,8 @@ public class PosController implements Initializable{
         barcodeBtn.setOnAction(event -> clickBarcodeBtn());
         refund.setOnAction(event -> clickRefundBtn());
 
+
+
         try {
             String url = "jdbc:postgresql://localhost:5432/postgres";
             String usr = "postgres";
@@ -120,17 +124,19 @@ public class PosController implements Initializable{
             });
 
             ((Button)(cash.getChildrenUnmodifiable().get(0))).setOnAction(new EventHandler<ActionEvent>() {
+
                 @Override
                 public void handle(ActionEvent event) {
-                    received.setText(((TextArea)(cash.getChildrenUnmodifiable().get(1))).getText());
+                    String rcv = ((TextArea)(cash.getChildrenUnmodifiable().get(1))).getText();
+
+                    cashStage.close();
+                    received.setText(rcv);
                     int chg = Integer.parseInt(received.getText())-Integer.parseInt(price.getText());
                     if (chg >= 0) {
-                        change.setText(chg+"");
+                        change.setText(String.valueOf(chg));
                     } else {
-                        cashStage.close();
                         return ;
                     }
-                    cashStage.close();
 
                     try {
                         String url = "jdbc:postgresql://localhost:5432/postgres";
@@ -157,21 +163,29 @@ public class PosController implements Initializable{
                             preparedStatement.executeUpdate();
                         }
 
+
+
                         resultSet.close();
                         db.close();
                     } catch (SQLException | ClassNotFoundException e) {
                         e.printStackTrace();
                     }
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    received.setText("");
-                    price.setText("");
-                    change.setText("");
-                    posList.clear();
-                    counterTable.setItems(posList);
+
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(5000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            received.setText("");
+                            change.setText("");
+                            price.setText("");
+                            posList.clear();
+                            counterTable.setItems(posList);
+                        }
+                    });
                 }
             });
             cashStage.show();
@@ -229,16 +243,22 @@ public class PosController implements Initializable{
                     } catch (SQLException | ClassNotFoundException e) {
                         e.printStackTrace();
                     }
-                    try {
-                        Thread.sleep(5000);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                    received.setText("");
-                    price.setText("");
-                    change.setText("");
-                    posList.clear();
-                    counterTable.setItems(posList);
+
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                Thread.sleep(5000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            received.setText("");
+                            change.setText("");
+                            price.setText("");
+                            posList.clear();
+                            counterTable.setItems(posList);
+                        }
+                    });
                 }
             });
             cardStage.show();
