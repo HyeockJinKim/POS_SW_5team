@@ -298,9 +298,16 @@ public class PosController implements Initializable{
                     this.price.setText("0");
                 }
                 this.price.setText(Integer.parseInt(this.price.getText())+price*quan+"");
-
-                posList.add(new Sales(new SimpleIntegerProperty(barcode), new SimpleIntegerProperty(quan), new SimpleStringProperty(name), new SimpleIntegerProperty(price)));
-
+                boolean isContain = false;
+                for (Sales sales : posList) {
+                    if (sales.getProductBarcode() == barcode) {
+                        isContain = true;
+                        posList.get(posList.indexOf(sales)).setQuantity(sales.getQuantity()+quan);
+                    }
+                }
+                if (!isContain) {
+                    posList.add(new Sales(new SimpleIntegerProperty(barcode), new SimpleIntegerProperty(quan), new SimpleStringProperty(name), new SimpleIntegerProperty(price)));
+                }
                 calname.setCellValueFactory(cellData -> cellData.getValue().productNameProperty());
                 calprice.setCellValueFactory(cellData -> cellData.getValue().productPriceProperty().asObject());
                 calquan.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
