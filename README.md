@@ -27,8 +27,8 @@ CREATE TABLE SALES (
 INSERT INTO public.product (barcode, productname, price) VALUES (201502043, '바밤바', 500);
 INSERT INTO public.product (barcode, productname, price) VALUES (201502044, '구구콘', 1500);
 INSERT INTO public.product (barcode, productname, price) VALUES (201502045, '빵또아', 1500);
-INSERT INTO public.product (barcode, productname, price) VALUES (201502046, '수박바', 1500);
-INSERT INTO public.product (barcode, productname, price) VALUES (201502047, '스크류바', 1500);
+INSERT INTO public.product (barcode, productname, price) VALUES (201502046, '수박바', 500);
+INSERT INTO public.product (barcode, productname, price) VALUES (201502047, '스크류바', 500);
 INSERT INTO public.product (barcode, productname, price) VALUES (201502048, '핫바', 1200);
 INSERT INTO public.product (barcode, productname, price) VALUES (201502049, '나랑드사이다', 500);
 INSERT INTO public.product (barcode, productname, price) VALUES (201502050, '수박바젤리', 700);
