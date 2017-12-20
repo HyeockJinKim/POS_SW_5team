@@ -21,7 +21,7 @@ CREATE TABLE SALES (
   barcode INT REFERENCES PRODUCT(barcode) ,
   salesNumber INT REFERENCES SALES_RECORD(salesNumber),
   quantity INT,
-  PRIMARY KEY(barcode, salesNumber)
+  PRIMARY KEY(barcode, salesNumber, quantity)
 );
 
 INSERT INTO public.product (barcode, productname, price) VALUES (201502043, '바밤바', 500);
