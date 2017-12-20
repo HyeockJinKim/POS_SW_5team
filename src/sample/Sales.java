@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.StringProperty;
 
 public class Sales {
@@ -15,6 +16,7 @@ public class Sales {
         this.quantity = quantity;
         this.productName = productName;
         this.productPrice = productPrice;
+        this.salesNumber = new SimpleIntegerProperty();
     }
 
     public String getProductName() {

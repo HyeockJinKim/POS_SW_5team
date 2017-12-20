@@ -105,7 +105,8 @@ public class PosController implements Initializable{
             resultSet.close();
 
             //매출정보 가져오기
-            preparedStatement = db.prepareStatement("SELECT salesnumber, salestime, productname, price, quantity, salesmoney, iscash FROM sales_record NATURAL JOIN sales NATURAL JOIN product");
+            preparedStatement = db.prepareStatement("SELECT salesnumber, salestime, productname, price, quantity, salesmoney, iscash " +
+                    "FROM sales_record NATURAL JOIN sales NATURAL JOIN product order by salesnumber");
             ResultSet salesRecordResult = preparedStatement.executeQuery();
             ObservableList<SalesInformation> recordList = FXCollections.observableArrayList();
             String prevTime = "";
@@ -371,21 +372,23 @@ public class PosController implements Initializable{
             String pwd = "su6407";
             Class.forName("org.postgresql.Driver");
             db = DriverManager.getConnection(url, usr, pwd);
-            PreparedStatement preparedStatement = db.prepareStatement("SELECT barcode, productname, price, quantity FROM sales NATURAL JOIN product ON salesnumber="+selectedRecord.getSalesNumber());
+            PreparedStatement preparedStatement = db.prepareStatement("SELECT barcode, productname, price, quantity, salesnumber " +
+                    " FROM sales NATURAL JOIN product " +
+                    " WHERE salesnumber="+selectedRecord.getSalesNumber()+" and barcode not in " +
+                    " (select barcode from sales where salesnumber="+selectedRecord.getSalesNumber()+" and quantity<0)");
             ResultSet resultSet = preparedStatement.executeQuery();
+            db.close();
 
             TableView<Sales> refundList = (TableView<Sales>)(refund.getChildrenUnmodifiable().get(0));
             ObservableList<Sales> data = FXCollections.observableArrayList();
-//            Sales sales1 = new Sales(new SimpleIntegerProperty(001), new SimpleIntegerProperty(1), new SimpleStringProperty("product1"), new SimpleIntegerProperty(1000));
-//            data.add(sales1);
-//            Sales sales2 = new Sales(new SimpleIntegerProperty(002), new SimpleIntegerProperty(1), new SimpleStringProperty("product2"), new SimpleIntegerProperty(1500));
-//            data.add(sales2);
             while (resultSet.next()) {
                 int barcode = resultSet.getInt(1);
                 String productname = resultSet.getString(2);
                 int price = resultSet.getInt(3);
                 int quantity = resultSet.getInt(4);
-                data.add(new Sales(new SimpleIntegerProperty(barcode), new SimpleIntegerProperty(quantity), new SimpleStringProperty(productname), new SimpleIntegerProperty(price)));
+                Sales sales = new Sales(new SimpleIntegerProperty(barcode), new SimpleIntegerProperty(quantity), new SimpleStringProperty(productname), new SimpleIntegerProperty(price));
+                sales.setSalesNumber(resultSet.getInt(5));
+                data.add(sales);
             }
             refundList.setItems(data);
 
@@ -401,13 +404,29 @@ public class PosController implements Initializable{
                 @Override
                 public void handle(ActionEvent event) {
                     Sales selected = refundList.getSelectionModel().getSelectedItem();
-                    System.out.println(selected.getProductName());
+                    int barcode = selected.getProductBarcode();
+                    int salesnumber = selected.getSalesNumber();
+                    int quantity = -selected.getQuantity();
+                    try {
+                        String url = "jdbc:postgresql://localhost:5432/postgres";
+                        String usr = "postgres";
+                        String pwd = "su6407";
+                        Class.forName("org.postgresql.Driver");
+                        db = DriverManager.getConnection(url, usr, pwd);
+                        PreparedStatement preparedStatement = db.prepareStatement("insert into sales (barcode, salesnumber, quantity) " +
+                                " values ("+barcode+", "+salesnumber+", "+quantity+")");
+                        preparedStatement.executeUpdate();
+                        db.close();
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    System.out.println(selected.getProductName()+", "+quantity);
 
                     refundStage.close();
                 }
             });
             refundStage.show();
-            db.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
