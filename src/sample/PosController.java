@@ -104,44 +104,18 @@ public class PosController implements Initializable{
             productView.setItems(productList);
             resultSet.close();
 
-            //매출정보 가져오기
-            preparedStatement = db.prepareStatement("SELECT salesnumber, salestime, productname, price, quantity, salesmoney, iscash " +
-                    "FROM sales_record NATURAL JOIN sales NATURAL JOIN product order by salesnumber");
-            ResultSet salesRecordResult = preparedStatement.executeQuery();
-            ObservableList<SalesInformation> recordList = FXCollections.observableArrayList();
-            String prevTime = "";
-            while (salesRecordResult.next()) {
-                int salesnumber = salesRecordResult.getInt(1);
-                String salestime = salesRecordResult.getString(2);
-                String productname = salesRecordResult.getString(3);
-                int price = salesRecordResult.getInt(4);
-                int quantity = salesRecordResult.getInt(5);
-                int salesmoney = salesRecordResult.getInt(6);
-                boolean isCash = salesRecordResult.getBoolean(7);
-                SalesInformation salesInfo;
-                if (!prevTime.equals(salestime)) {
-                    salesInfo = new SalesInformation(new SimpleIntegerProperty(salesnumber), new SimpleStringProperty(salestime), null,
-                            null, null, new SimpleIntegerProperty(salesmoney), new SimpleBooleanProperty(isCash));
-                    recordList.add(salesInfo);
-                    prevTime = salestime;
-                }
-                salesInfo = new SalesInformation(new SimpleIntegerProperty(salesnumber),null, new SimpleStringProperty(productname),
-                        new SimpleIntegerProperty(price), new SimpleIntegerProperty(quantity), null, null);
-                recordList.add(salesInfo);
-            }
-            recordList.add(new SalesInformation(null,null, new SimpleStringProperty("구구콘"),
-                    new SimpleIntegerProperty(1500), new SimpleIntegerProperty(-1), null, null));
-            salesRecordTable.setItems(recordList);
-            salesRecordResult.close();
-
             db.close();
+
+            //매출정보 가져오기
+            updateSalesRecordTable();
+
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
 
     }
 
-    // TODO : Dialog 제대로 만드셈. (안꺼지는문제 해결 및 결제 부분)
+    // Dialog 제대로 만드셈. (안꺼지는문제 해결 및 결제 부분)
     public void clickCashBtn() {
         Stage cashStage = new Stage();
         try {
@@ -195,10 +169,11 @@ public class PosController implements Initializable{
                             preparedStatement.executeUpdate();
                         }
 
-
-
                         resultSet.close();
                         db.close();
+
+                        //매출정보 업데이트
+                        updateSalesRecordTable();
                     } catch (SQLException | ClassNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -272,6 +247,9 @@ public class PosController implements Initializable{
 
                         resultSet.close();
                         db.close();
+
+                        //매출정보 업데이트
+                        updateSalesRecordTable();
                     } catch (SQLException | ClassNotFoundException e) {
                         e.printStackTrace();
                     }
@@ -299,7 +277,7 @@ public class PosController implements Initializable{
         }
     }
 
-    // TODO : 정보를 가져온다. 가져온 정보를 스캔해서 Table View에 추가한다.
+    // 정보를 가져온다. 가져온 정보를 스캔해서 Table View에 추가한다.
     public void clickBarcodeBtn() {
 
         if (barcode.getText().equals("")) {
@@ -355,7 +333,7 @@ public class PosController implements Initializable{
     }
 
 
-    // TODO : 환불 할 기록? 선택 후 환불 버튼 누르게 작성. 선택한 정보도 띄워주자!!
+    // 환불 할 기록? 선택 후 환불 버튼 누르게 작성. 선택한 정보도 띄워주자!!
     // 환불다이얼로그에서 환불한 물품 선택해서 확인 누르면 매출기록에 환불한 기록이 추가되어야 함.
     public void clickRefundBtn() {
         SalesInformation selectedRecord = salesRecordTable.getSelectionModel().getSelectedItem();
@@ -417,6 +395,8 @@ public class PosController implements Initializable{
                                 " values ("+barcode+", "+salesnumber+", "+quantity+")");
                         preparedStatement.executeUpdate();
                         db.close();
+                        //TODO 매출정보 테이블뷰 업데이트!
+                        updateSalesRecordTable();
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
@@ -432,4 +412,45 @@ public class PosController implements Initializable{
         }
     }
 
+    public void updateSalesRecordTable() {
+        try {
+            String url = "jdbc:postgresql://localhost:5432/postgres";
+            String usr = "postgres";
+            String pwd = "su6407";
+            Class.forName("org.postgresql.Driver");
+            db = DriverManager.getConnection(url, usr, pwd);
+
+            //매출정보 가져오기
+            PreparedStatement preparedStatement = db.prepareStatement("SELECT salesnumber, salestime, productname, price, quantity, salesmoney, iscash " +
+                    "FROM sales_record NATURAL JOIN sales NATURAL JOIN product order by salesnumber");
+            ResultSet salesRecordResult = preparedStatement.executeQuery();
+            ObservableList<SalesInformation> recordList = FXCollections.observableArrayList();
+            String prevTime = "";
+            while (salesRecordResult.next()) {
+                int salesnumber = salesRecordResult.getInt(1);
+                String salestime = salesRecordResult.getString(2);
+                String productname = salesRecordResult.getString(3);
+                int price = salesRecordResult.getInt(4);
+                int quantity = salesRecordResult.getInt(5);
+                int salesmoney = salesRecordResult.getInt(6);
+                boolean isCash = salesRecordResult.getBoolean(7);
+                SalesInformation salesInfo;
+                if (!prevTime.equals(salestime)) {
+                    salesInfo = new SalesInformation(new SimpleIntegerProperty(salesnumber), new SimpleStringProperty(salestime), null,
+                            null, null, new SimpleIntegerProperty(salesmoney), new SimpleBooleanProperty(isCash));
+                    recordList.add(salesInfo);
+                    prevTime = salestime;
+                }
+                salesInfo = new SalesInformation(new SimpleIntegerProperty(salesnumber),null, new SimpleStringProperty(productname),
+                        new SimpleIntegerProperty(price), new SimpleIntegerProperty(quantity), null, null);
+                recordList.add(salesInfo);
+            }
+            salesRecordTable.setItems(recordList);
+            salesRecordResult.close();
+
+            db.close();
+        } catch (SQLException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
 }

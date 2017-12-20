@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7ade63bb-993c-4def-aa1f-bf15dc71f0b2" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dbnavigator.xml" afterPath="$PROJECT_DIR$/.idea/dbnavigator.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/POS_KHZ.fxml" afterPath="$PROJECT_DIR$/src/sample/POS_KHZ.fxml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/PosController.java" afterPath="$PROJECT_DIR$/src/sample/PosController.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/sample/Sales.java" afterPath="$PROJECT_DIR$/src/sample/Sales.java" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -21,16 +19,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="323">
-              <caret line="23" column="0" lean-forward="true" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="Connection" pinned="false" current-in-tab="false">
         <entry file="db://c4c439f1-b25a-4682-8294-c9d0691a952e/console#Connection">
           <provider selected="true" editor-type-id="0.CONSOLE">
@@ -41,34 +29,32 @@
       <file leaf-file-name="PosController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/PosController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="245">
-              <caret line="389" column="55" lean-forward="false" selection-start-line="389" selection-start-column="55" selection-end-line="389" selection-end-column="55" />
+            <state relative-caret-position="313">
+              <caret line="318" column="28" lean-forward="false" selection-start-line="318" selection-start-column="28" selection-end-line="318" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="method#initialize#0;class#PosController#0" expanded="false" />
                 <element signature="method#clickCashBtn#0;class#PosController#0" expanded="false" />
-                <element signature="method#clickBarcodeBtn#0;class#PosController#0" expanded="false" />
-                <marker date="1513807559650" expanded="true" signature="2631:2653" ph=" SELECT statement (PRODUCT)" />
-                <marker date="1513807559650" expanded="true" signature="3659:3794" ph=" SELECT statement (SALES_RECORD)" />
-                <marker date="1513807559650" expanded="true" signature="3659:3813" ph=" SELECT statement (SALES_RECORD, SALES)" />
-                <marker date="1513807559650" expanded="true" signature="3659:3821" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
-                <marker date="1513807559650" expanded="true" signature="3659:3830" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
-                <marker date="1513807559650" expanded="true" signature="3659:3842" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
-                <marker date="1513807559650" expanded="true" signature="7471:7617" ph=" INSERT statement (SALES_RECORD)" />
-                <marker date="1513807559650" expanded="true" signature="7784:7865" ph=" SELECT statement (SALES_RECORD_SALESNUMBER_SEQ)" />
-                <marker date="1513807559650" expanded="true" signature="8273:8441" ph=" INSERT statement (SALES)" />
-                <marker date="1513807559650" expanded="true" signature="10910:11056" ph=" INSERT statement (SALES_RECORD)" />
-                <marker date="1513807559650" expanded="true" signature="11223:11304" ph=" SELECT statement (SALES_RECORD_SALESNUMBER_SEQ)" />
-                <marker date="1513807559650" expanded="true" signature="11712:11881" ph=" INSERT statement (SALES)" />
-                <marker date="1513807559650" expanded="true" signature="13727:13809" ph=" SELECT statement (PRODUCT)" />
-                <marker date="1513807559650" expanded="true" signature="16316:16431" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
-                <marker date="1513807559650" expanded="true" signature="16316:16476" ph=" SELECT statement (PRODUCT, SALES)" />
-                <marker date="1513807559650" expanded="true" signature="16316:16478" ph=" SELECT statement (PRODUCT, SALES)" />
-                <marker date="1513807559650" expanded="true" signature="16316:16602" ph=" SELECT statement (PRODUCT, SALES)" />
-                <marker date="1513807559650" expanded="true" signature="16316:16653" ph=" SELECT statement (PRODUCT, SALES)" />
-                <marker date="1513807559650" expanded="true" signature="18649:18746" ph=" INSERT statement (SALES)" />
-                <marker date="1513807559650" expanded="true" signature="18649:18759" ph=" INSERT statement (SALES)" />
-                <marker date="1513807559650" expanded="true" signature="18649:18776" ph=" INSERT statement (SALES)" />
-                <marker date="1513807559650" expanded="true" signature="18649:18789" ph=" INSERT statement (SALES)" />
+                <element signature="method#clickCardBtn#0;class#PosController#0" expanded="false" />
+                <element signature="method#clickRefundBtn#0;class#PosController#0" expanded="false" />
+                <marker date="1513808601370" expanded="true" signature="2631:2653" ph=" SELECT statement (PRODUCT)" />
+                <marker date="1513808601370" expanded="true" signature="5536:5682" ph=" INSERT statement (SALES_RECORD)" />
+                <marker date="1513808601370" expanded="true" signature="5849:5930" ph=" SELECT statement (SALES_RECORD_SALESNUMBER_SEQ)" />
+                <marker date="1513808601370" expanded="true" signature="6338:6506" ph=" INSERT statement (SALES)" />
+                <marker date="1513808601370" expanded="true" signature="9060:9206" ph=" INSERT statement (SALES_RECORD)" />
+                <marker date="1513808601370" expanded="true" signature="9373:9454" ph=" SELECT statement (SALES_RECORD_SALESNUMBER_SEQ)" />
+                <marker date="1513808601370" expanded="true" signature="9862:10031" ph=" INSERT statement (SALES)" />
+                <marker date="1513808601370" expanded="true" signature="11957:12039" ph=" SELECT statement (PRODUCT)" />
+                <marker date="1513808601370" expanded="true" signature="14539:14654" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
+                <marker date="1513808601370" expanded="true" signature="14539:14699" ph=" SELECT statement (PRODUCT, SALES)" />
+                <marker date="1513808601370" expanded="true" signature="14539:14701" ph=" SELECT statement (PRODUCT, SALES)" />
+                <marker date="1513808601370" expanded="true" signature="14539:14825" ph=" SELECT statement (PRODUCT, SALES)" />
+                <marker date="1513808601370" expanded="true" signature="14539:14876" ph=" SELECT statement (PRODUCT, SALES)" />
+                <marker date="1513808601370" expanded="true" signature="16872:16969" ph=" INSERT statement (SALES)" />
+                <marker date="1513808601370" expanded="true" signature="16872:16982" ph=" INSERT statement (SALES)" />
+                <marker date="1513808601370" expanded="true" signature="16872:16999" ph=" INSERT statement (SALES)" />
+                <marker date="1513808601370" expanded="true" signature="16872:17012" ph=" INSERT statement (SALES)" />
+                <marker date="1513808601370" expanded="true" signature="17999:18182" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
               </folding>
             </state>
           </provider>
@@ -86,14 +72,14 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="POS_KHZ.fxml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="POS_KHZ.fxml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/sample/POS_KHZ.fxml">
           <provider editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="148" column="52" lean-forward="true" selection-start-line="148" selection-start-column="52" selection-end-line="148" selection-end-column="52" />
+            <state relative-caret-position="290">
+              <caret line="30" column="65" lean-forward="true" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
               <folding>
-                <element signature="n#Tab#0;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#!!top" expanded="false" />
-                <marker date="1513801902986" expanded="false" signature="10886:11636" ph="..." />
+                <marker date="1513808823640" expanded="false" signature="8415:10923" ph="..." />
+                <marker date="1513808823640" expanded="false" signature="10956:11706" ph="..." />
               </folding>
             </state>
           </provider>
@@ -115,7 +101,7 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Sales.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Sales.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Sales.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="283">
@@ -162,10 +148,10 @@
       <list>
         <option value="$PROJECT_DIR$/src/sample/refund.fxml" />
         <option value="$PROJECT_DIR$/src/sample/SalesInformation.java" />
-        <option value="$PROJECT_DIR$/src/sample/POS_KHZ.fxml" />
         <option value="[Connection] CONSOLE - Connection" />
-        <option value="$PROJECT_DIR$/src/sample/PosController.java" />
         <option value="$PROJECT_DIR$/src/sample/Sales.java" />
+        <option value="$PROJECT_DIR$/src/sample/PosController.java" />
+        <option value="$PROJECT_DIR$/src/sample/POS_KHZ.fxml" />
       </list>
     </option>
   </component>
@@ -550,11 +536,11 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.38527396" sideWeight="0.4969743" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.36643836" sideWeight="0.4969743" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="FAQ Robot" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.15506808" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.15506808" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -593,30 +579,28 @@
           <caret line="94" column="0" lean-forward="true" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="method#initialize#0;class#PosController#0" expanded="false" />
             <element signature="method#clickCashBtn#0;class#PosController#0" expanded="false" />
-            <element signature="method#clickBarcodeBtn#0;class#PosController#0" expanded="false" />
-            <marker date="1513807559650" expanded="true" signature="2631:2653" ph=" SELECT statement (PRODUCT)" />
-            <marker date="1513807559650" expanded="true" signature="3659:3794" ph=" SELECT statement (SALES_RECORD)" />
-            <marker date="1513807559650" expanded="true" signature="3659:3813" ph=" SELECT statement (SALES_RECORD, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="3659:3821" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="3659:3830" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="3659:3842" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="7471:7617" ph=" INSERT statement (SALES_RECORD)" />
-            <marker date="1513807559650" expanded="true" signature="7784:7865" ph=" SELECT statement (SALES_RECORD_SALESNUMBER_SEQ)" />
-            <marker date="1513807559650" expanded="true" signature="8273:8441" ph=" INSERT statement (SALES)" />
-            <marker date="1513807559650" expanded="true" signature="10910:11056" ph=" INSERT statement (SALES_RECORD)" />
-            <marker date="1513807559650" expanded="true" signature="11223:11304" ph=" SELECT statement (SALES_RECORD_SALESNUMBER_SEQ)" />
-            <marker date="1513807559650" expanded="true" signature="11712:11881" ph=" INSERT statement (SALES)" />
-            <marker date="1513807559650" expanded="true" signature="13727:13809" ph=" SELECT statement (PRODUCT)" />
-            <marker date="1513807559650" expanded="true" signature="16316:16431" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="16316:16476" ph=" SELECT statement (PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="16316:16478" ph=" SELECT statement (PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="16316:16602" ph=" SELECT statement (PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="16316:16653" ph=" SELECT statement (PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="18649:18746" ph=" INSERT statement (SALES)" />
-            <marker date="1513807559650" expanded="true" signature="18649:18759" ph=" INSERT statement (SALES)" />
-            <marker date="1513807559650" expanded="true" signature="18649:18776" ph=" INSERT statement (SALES)" />
-            <marker date="1513807559650" expanded="true" signature="18649:18789" ph=" INSERT statement (SALES)" />
+            <element signature="method#clickCardBtn#0;class#PosController#0" expanded="false" />
+            <element signature="method#clickRefundBtn#0;class#PosController#0" expanded="false" />
+            <marker date="1513808601370" expanded="true" signature="2631:2653" ph=" SELECT statement (PRODUCT)" />
+            <marker date="1513808601370" expanded="true" signature="5536:5682" ph=" INSERT statement (SALES_RECORD)" />
+            <marker date="1513808601370" expanded="true" signature="5849:5930" ph=" SELECT statement (SALES_RECORD_SALESNUMBER_SEQ)" />
+            <marker date="1513808601370" expanded="true" signature="6338:6506" ph=" INSERT statement (SALES)" />
+            <marker date="1513808601370" expanded="true" signature="9060:9206" ph=" INSERT statement (SALES_RECORD)" />
+            <marker date="1513808601370" expanded="true" signature="9373:9454" ph=" SELECT statement (SALES_RECORD_SALESNUMBER_SEQ)" />
+            <marker date="1513808601370" expanded="true" signature="9862:10031" ph=" INSERT statement (SALES)" />
+            <marker date="1513808601370" expanded="true" signature="11957:12039" ph=" SELECT statement (PRODUCT)" />
+            <marker date="1513808601370" expanded="true" signature="14539:14654" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
+            <marker date="1513808601370" expanded="true" signature="14539:14699" ph=" SELECT statement (PRODUCT, SALES)" />
+            <marker date="1513808601370" expanded="true" signature="14539:14701" ph=" SELECT statement (PRODUCT, SALES)" />
+            <marker date="1513808601370" expanded="true" signature="14539:14825" ph=" SELECT statement (PRODUCT, SALES)" />
+            <marker date="1513808601370" expanded="true" signature="14539:14876" ph=" SELECT statement (PRODUCT, SALES)" />
+            <marker date="1513808601370" expanded="true" signature="16872:16969" ph=" INSERT statement (SALES)" />
+            <marker date="1513808601370" expanded="true" signature="16872:16982" ph=" INSERT statement (SALES)" />
+            <marker date="1513808601370" expanded="true" signature="16872:16999" ph=" INSERT statement (SALES)" />
+            <marker date="1513808601370" expanded="true" signature="16872:17012" ph=" INSERT statement (SALES)" />
+            <marker date="1513808601370" expanded="true" signature="17999:18182" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
           </folding>
         </state>
       </provider>
@@ -626,8 +610,8 @@
         <state relative-caret-position="2451">
           <caret line="129" column="80" lean-forward="false" selection-start-line="129" selection-start-column="80" selection-end-line="129" selection-end-column="80" />
           <folding>
-            <element signature="n#Tab#0;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#!!top" expanded="false" />
-            <marker date="1513801902986" expanded="false" signature="10886:11636" ph="..." />
+            <marker date="1513808823640" expanded="false" signature="8415:10923" ph="..." />
+            <marker date="1513808823640" expanded="false" signature="10956:11706" ph="..." />
           </folding>
         </state>
       </provider>
@@ -781,30 +765,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/SalesInformation.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="29" column="65" lean-forward="false" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/POS_KHZ.fxml">
-      <provider editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="148" column="52" lean-forward="true" selection-start-line="148" selection-start-column="52" selection-end-line="148" selection-end-column="52" />
-          <folding>
-            <element signature="n#Tab#0;n#tabs#0;n#TabPane#0;n#children#0;n#AnchorPane#0;n#!!top" expanded="false" />
-            <marker date="1513801902986" expanded="false" signature="10886:11636" ph="..." />
-          </folding>
-        </state>
-      </provider>
-      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
-        <state />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -821,6 +781,19 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Sales.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="283">
+          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+          <folding>
+            <element signature="e#1595#1596#0" expanded="true" />
+            <element signature="e#1635#1636#0" expanded="true" />
+            <element signature="e#1772#1773#0" expanded="true" />
+            <element signature="e#1821#1822#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Main.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="323">
@@ -834,51 +807,60 @@
         <state line="21" column="18" selection-start="534" selection-end="534" vertical-scroll-proportion="-8.310345" current-schema="public" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/PosController.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/SalesInformation.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="245">
-          <caret line="389" column="55" lean-forward="false" selection-start-line="389" selection-start-column="55" selection-end-line="389" selection-end-column="55" />
+        <state relative-caret-position="300">
+          <caret line="29" column="65" lean-forward="false" selection-start-line="29" selection-start-column="65" selection-end-line="29" selection-end-column="65" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="method#clickCashBtn#0;class#PosController#0" expanded="false" />
-            <element signature="method#clickBarcodeBtn#0;class#PosController#0" expanded="false" />
-            <marker date="1513807559650" expanded="true" signature="2631:2653" ph=" SELECT statement (PRODUCT)" />
-            <marker date="1513807559650" expanded="true" signature="3659:3794" ph=" SELECT statement (SALES_RECORD)" />
-            <marker date="1513807559650" expanded="true" signature="3659:3813" ph=" SELECT statement (SALES_RECORD, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="3659:3821" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="3659:3830" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="3659:3842" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="7471:7617" ph=" INSERT statement (SALES_RECORD)" />
-            <marker date="1513807559650" expanded="true" signature="7784:7865" ph=" SELECT statement (SALES_RECORD_SALESNUMBER_SEQ)" />
-            <marker date="1513807559650" expanded="true" signature="8273:8441" ph=" INSERT statement (SALES)" />
-            <marker date="1513807559650" expanded="true" signature="10910:11056" ph=" INSERT statement (SALES_RECORD)" />
-            <marker date="1513807559650" expanded="true" signature="11223:11304" ph=" SELECT statement (SALES_RECORD_SALESNUMBER_SEQ)" />
-            <marker date="1513807559650" expanded="true" signature="11712:11881" ph=" INSERT statement (SALES)" />
-            <marker date="1513807559650" expanded="true" signature="13727:13809" ph=" SELECT statement (PRODUCT)" />
-            <marker date="1513807559650" expanded="true" signature="16316:16431" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="16316:16476" ph=" SELECT statement (PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="16316:16478" ph=" SELECT statement (PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="16316:16602" ph=" SELECT statement (PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="16316:16653" ph=" SELECT statement (PRODUCT, SALES)" />
-            <marker date="1513807559650" expanded="true" signature="18649:18746" ph=" INSERT statement (SALES)" />
-            <marker date="1513807559650" expanded="true" signature="18649:18759" ph=" INSERT statement (SALES)" />
-            <marker date="1513807559650" expanded="true" signature="18649:18776" ph=" INSERT statement (SALES)" />
-            <marker date="1513807559650" expanded="true" signature="18649:18789" ph=" INSERT statement (SALES)" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Sales.java">
+    <entry file="file://$PROJECT_DIR$/src/sample/PosController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="283">
-          <caret line="19" column="5" lean-forward="true" selection-start-line="19" selection-start-column="5" selection-end-line="19" selection-end-column="5" />
+        <state relative-caret-position="313">
+          <caret line="318" column="28" lean-forward="false" selection-start-line="318" selection-start-column="28" selection-end-line="318" selection-end-column="28" />
           <folding>
-            <element signature="e#1595#1596#0" expanded="true" />
-            <element signature="e#1635#1636#0" expanded="true" />
-            <element signature="e#1772#1773#0" expanded="true" />
-            <element signature="e#1821#1822#0" expanded="true" />
+            <element signature="imports" expanded="true" />
+            <element signature="method#initialize#0;class#PosController#0" expanded="false" />
+            <element signature="method#clickCashBtn#0;class#PosController#0" expanded="false" />
+            <element signature="method#clickCardBtn#0;class#PosController#0" expanded="false" />
+            <element signature="method#clickRefundBtn#0;class#PosController#0" expanded="false" />
+            <marker date="1513808601370" expanded="true" signature="2631:2653" ph=" SELECT statement (PRODUCT)" />
+            <marker date="1513808601370" expanded="true" signature="5536:5682" ph=" INSERT statement (SALES_RECORD)" />
+            <marker date="1513808601370" expanded="true" signature="5849:5930" ph=" SELECT statement (SALES_RECORD_SALESNUMBER_SEQ)" />
+            <marker date="1513808601370" expanded="true" signature="6338:6506" ph=" INSERT statement (SALES)" />
+            <marker date="1513808601370" expanded="true" signature="9060:9206" ph=" INSERT statement (SALES_RECORD)" />
+            <marker date="1513808601370" expanded="true" signature="9373:9454" ph=" SELECT statement (SALES_RECORD_SALESNUMBER_SEQ)" />
+            <marker date="1513808601370" expanded="true" signature="9862:10031" ph=" INSERT statement (SALES)" />
+            <marker date="1513808601370" expanded="true" signature="11957:12039" ph=" SELECT statement (PRODUCT)" />
+            <marker date="1513808601370" expanded="true" signature="14539:14654" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
+            <marker date="1513808601370" expanded="true" signature="14539:14699" ph=" SELECT statement (PRODUCT, SALES)" />
+            <marker date="1513808601370" expanded="true" signature="14539:14701" ph=" SELECT statement (PRODUCT, SALES)" />
+            <marker date="1513808601370" expanded="true" signature="14539:14825" ph=" SELECT statement (PRODUCT, SALES)" />
+            <marker date="1513808601370" expanded="true" signature="14539:14876" ph=" SELECT statement (PRODUCT, SALES)" />
+            <marker date="1513808601370" expanded="true" signature="16872:16969" ph=" INSERT statement (SALES)" />
+            <marker date="1513808601370" expanded="true" signature="16872:16982" ph=" INSERT statement (SALES)" />
+            <marker date="1513808601370" expanded="true" signature="16872:16999" ph=" INSERT statement (SALES)" />
+            <marker date="1513808601370" expanded="true" signature="16872:17012" ph=" INSERT statement (SALES)" />
+            <marker date="1513808601370" expanded="true" signature="17999:18182" ph=" SELECT statement (SALES_RECORD, PRODUCT, SALES)" />
           </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/POS_KHZ.fxml">
+      <provider editor-type-id="text-editor">
+        <state relative-caret-position="290">
+          <caret line="30" column="65" lean-forward="true" selection-start-line="30" selection-start-column="65" selection-end-line="30" selection-end-column="65" />
+          <folding>
+            <marker date="1513808823640" expanded="false" signature="8415:10923" ph="..." />
+            <marker date="1513808823640" expanded="false" signature="10956:11706" ph="..." />
+          </folding>
+        </state>
+      </provider>
+      <provider selected="true" editor-type-id="JavaFX-Scene-Builder">
+        <state />
       </provider>
     </entry>
   </component>
