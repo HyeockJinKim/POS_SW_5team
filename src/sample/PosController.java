@@ -2,6 +2,7 @@ package sample;
 
 import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.collections.FXCollections;
@@ -52,6 +53,8 @@ public class PosController implements Initializable{
     @FXML
     private Button card;
     @FXML
+    private TableView<SalesInformation> salesRecordTable;
+    @FXML
     private Button refundOk;
     @FXML
     private Button barcodeBtn;
@@ -78,8 +81,6 @@ public class PosController implements Initializable{
         barcodeBtn.setOnAction(event -> clickBarcodeBtn());
         refund.setOnAction(event -> clickRefundBtn());
 
-
-
         try {
             String url = "jdbc:postgresql://localhost:5432/postgres";
             String usr = "postgres";
@@ -102,6 +103,36 @@ public class PosController implements Initializable{
 
             productView.setItems(productList);
             resultSet.close();
+
+            //매출정보 가져오기
+            preparedStatement = db.prepareStatement("SELECT salesnumber, salestime, productname, price, quantity, salesmoney, iscash FROM sales_record NATURAL JOIN sales NATURAL JOIN product");
+            ResultSet salesRecordResult = preparedStatement.executeQuery();
+            ObservableList<SalesInformation> recordList = FXCollections.observableArrayList();
+            String prevTime = "";
+            while (salesRecordResult.next()) {
+                int salesnumber = salesRecordResult.getInt(1);
+                String salestime = salesRecordResult.getString(2);
+                String productname = salesRecordResult.getString(3);
+                int price = salesRecordResult.getInt(4);
+                int quantity = salesRecordResult.getInt(5);
+                int salesmoney = salesRecordResult.getInt(6);
+                boolean isCash = salesRecordResult.getBoolean(7);
+                SalesInformation salesInfo;
+                if (!prevTime.equals(salestime)) {
+                    salesInfo = new SalesInformation(new SimpleIntegerProperty(salesnumber), new SimpleStringProperty(salestime), null,
+                            null, null, new SimpleIntegerProperty(salesmoney), new SimpleBooleanProperty(isCash));
+                    recordList.add(salesInfo);
+                    prevTime = salestime;
+                }
+                salesInfo = new SalesInformation(new SimpleIntegerProperty(salesnumber),null, new SimpleStringProperty(productname),
+                        new SimpleIntegerProperty(price), new SimpleIntegerProperty(quantity), null, null);
+                recordList.add(salesInfo);
+            }
+            recordList.add(new SalesInformation(null,null, new SimpleStringProperty("구구콘"),
+                    new SimpleIntegerProperty(1500), new SimpleIntegerProperty(-1), null, null));
+            salesRecordTable.setItems(recordList);
+            salesRecordResult.close();
+
             db.close();
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
@@ -323,14 +354,42 @@ public class PosController implements Initializable{
     }
 
 
-    // TODO : 환불 할 기록? 선택 후 환불 버튼 누르게 작성. 환불다이얼로그 끌 때 다 꺼지는거 수정 필요. 선택한 정보도 띄워주자!!
+    // TODO : 환불 할 기록? 선택 후 환불 버튼 누르게 작성. 선택한 정보도 띄워주자!!
     // 환불다이얼로그에서 환불한 물품 선택해서 확인 누르면 매출기록에 환불한 기록이 추가되어야 함.
     public void clickRefundBtn() {
+        SalesInformation selectedRecord = salesRecordTable.getSelectionModel().getSelectedItem();
+        System.out.println(selectedRecord.getSalesNumber());
+
         Stage refundStage = new Stage();
         try {
             Parent refund = FXMLLoader.load(getClass().getResource("refund.fxml"));
             refundStage.setTitle("환 불");
             refundStage.setScene(new Scene(refund, 600, 400));
+
+            String url = "jdbc:postgresql://localhost:5432/postgres";
+            String usr = "postgres";
+            String pwd = "su6407";
+            Class.forName("org.postgresql.Driver");
+            db = DriverManager.getConnection(url, usr, pwd);
+            PreparedStatement preparedStatement = db.prepareStatement("SELECT barcode, productname, price, quantity FROM sales NATURAL JOIN product ON salesnumber="+selectedRecord.getSalesNumber());
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            TableView<Sales> refundList = (TableView<Sales>)(refund.getChildrenUnmodifiable().get(0));
+            ObservableList<Sales> data = FXCollections.observableArrayList();
+//            Sales sales1 = new Sales(new SimpleIntegerProperty(001), new SimpleIntegerProperty(1), new SimpleStringProperty("product1"), new SimpleIntegerProperty(1000));
+//            data.add(sales1);
+//            Sales sales2 = new Sales(new SimpleIntegerProperty(002), new SimpleIntegerProperty(1), new SimpleStringProperty("product2"), new SimpleIntegerProperty(1500));
+//            data.add(sales2);
+            while (resultSet.next()) {
+                int barcode = resultSet.getInt(1);
+                String productname = resultSet.getString(2);
+                int price = resultSet.getInt(3);
+                int quantity = resultSet.getInt(4);
+                data.add(new Sales(new SimpleIntegerProperty(barcode), new SimpleIntegerProperty(quantity), new SimpleStringProperty(productname), new SimpleIntegerProperty(price)));
+            }
+            refundList.setItems(data);
+
+
             refundStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                 @Override
                 public void handle(final WindowEvent event) {
@@ -341,10 +400,14 @@ public class PosController implements Initializable{
             ((Button)(refund.getChildrenUnmodifiable().get(1))).setOnAction(new EventHandler<ActionEvent>() {
                 @Override
                 public void handle(ActionEvent event) {
+                    Sales selected = refundList.getSelectionModel().getSelectedItem();
+                    System.out.println(selected.getProductName());
+
                     refundStage.close();
                 }
             });
             refundStage.show();
+            db.close();
         } catch (Exception e) {
             e.printStackTrace();
         }

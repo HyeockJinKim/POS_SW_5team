@@ -5,14 +5,27 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.control.cell.PropertyValueFactory?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TableView prefHeight="400.0" prefWidth="500.0">
-        <columns>
-          <TableColumn prefWidth="260.0" text="물품명" />
-          <TableColumn prefWidth="140.0" text="가격" />
-            <TableColumn prefWidth="100.0" text="수량" />
-        </columns>
+          <columns>
+              <TableColumn prefWidth="260.0" text="물품명" >
+                  <cellValueFactory>
+                      <PropertyValueFactory property="productName" />
+                  </cellValueFactory>
+              </TableColumn>
+              <TableColumn prefWidth="140.0" text="가격" >
+                  <cellValueFactory>
+                      <PropertyValueFactory property="productPrice" />
+                  </cellValueFactory>
+              </TableColumn>
+              <TableColumn prefWidth="100.0" text="수량" >
+                  <cellValueFactory>
+                      <PropertyValueFactory property="quantity" />
+                  </cellValueFactory>
+              </TableColumn>
+          </columns>
       </TableView>
       <Button fx:id="refundOk" layoutX="510.0" layoutY="300.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="80.0" text="확인" />
    </children>
