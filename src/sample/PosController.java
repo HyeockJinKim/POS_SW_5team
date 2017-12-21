@@ -1,5 +1,7 @@
 package sample;
 
+import com.sun.org.apache.xpath.internal.SourceTree;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import javafx.application.Platform;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
@@ -32,6 +34,8 @@ import java.util.ResourceBundle;
 
 public class PosController implements Initializable{
 
+    @FXML
+    private TableColumn<Sales, Boolean> calbutton;
     @FXML
     private TableView<Sales> counterTable;
     @FXML
@@ -115,26 +119,6 @@ public class PosController implements Initializable{
             e.printStackTrace();
         }
 
-        TableColumn col_minus = new TableColumn<>("");
-        col_minus.setSortable(false);
-
-        col_minus.setCellValueFactory(
-                new Callback<TableColumn.CellDataFeatures<Sales, Boolean>,
-                                        ObservableValue<Boolean>>() {
-                    @Override
-                    public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Sales, Boolean> p) {
-                        return new SimpleBooleanProperty(p.getValue() != null);
-                    }
-                });
-
-        col_minus.setCellFactory(
-                new Callback<TableColumn<Sales, Boolean>, TableCell<Sales, Boolean>>() {
-                    @Override
-                    public TableCell<Sales, Boolean> call(TableColumn<Sales, Boolean> p) {
-                        return new ButtonCell();
-                    }
-                });
-        counterTable.getColumns().add(col_minus);
     }
 
     private class ButtonCell extends TableCell<Sales, Boolean> {
@@ -145,7 +129,19 @@ public class PosController implements Initializable{
                 @Override
                 public void handle(ActionEvent t) {
                     // do something when button clicked
-                    System.out.println("버튼 클릭!");
+                    Sales sales = (Sales) (getTableRow().getItem());
+                    System.out.print(sales.getProductName()+"  ");
+                    System.out.print(sales.getQuantity()+"->");
+                    sales.setQuantity(sales.getQuantity()-1);
+                    System.out.println(sales.getQuantity());
+                    price.setText(Integer.parseInt(price.getText())-sales.getProductPrice()+"");
+
+                    if (sales.getQuantity() == 0) {
+                        System.out.println(sales.getProductName()+"  삭제합니다아");
+                        posList.remove(sales);
+                        updateItem(new Boolean(true), true);
+
+                    }
                 }
             });
         }
@@ -155,6 +151,9 @@ public class PosController implements Initializable{
             super.updateItem(t, empty);
             if(!empty){
                 setGraphic(cellButton);
+            }
+            else {
+                setGraphic(null);
             }
         }
     }
@@ -366,6 +365,21 @@ public class PosController implements Initializable{
                 calname.setCellValueFactory(cellData -> cellData.getValue().productNameProperty());
                 calprice.setCellValueFactory(cellData -> cellData.getValue().productPriceProperty().asObject());
                 calquan.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
+                calbutton.setCellValueFactory(
+                    new Callback<TableColumn.CellDataFeatures<Sales, Boolean>,
+                                            ObservableValue<Boolean>>() {
+                        @Override
+                        public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Sales, Boolean> p) {
+                            return new SimpleBooleanProperty(p.getValue() != null);
+                        }
+                    });
+                calbutton.setCellFactory(
+                    new Callback<TableColumn<Sales, Boolean>, TableCell<Sales, Boolean>>() {
+                        @Override
+                        public TableCell<Sales, Boolean> call(TableColumn<Sales, Boolean> p) {
+                            return new ButtonCell();
+                        }
+                    });
             } else {
                 return;
             }
