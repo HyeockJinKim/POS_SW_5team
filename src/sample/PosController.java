@@ -5,6 +5,7 @@ import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -19,6 +20,7 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.stage.WindowEvent;
+import javafx.util.Callback;
 
 import java.net.URL;
 import java.sql.*;
@@ -113,7 +115,50 @@ public class PosController implements Initializable{
             e.printStackTrace();
         }
 
+        TableColumn col_minus = new TableColumn<>("");
+        col_minus.setSortable(false);
+
+        col_minus.setCellValueFactory(
+                new Callback<TableColumn.CellDataFeatures<Sales, Boolean>,
+                                        ObservableValue<Boolean>>() {
+                    @Override
+                    public ObservableValue<Boolean> call(TableColumn.CellDataFeatures<Sales, Boolean> p) {
+                        return new SimpleBooleanProperty(p.getValue() != null);
+                    }
+                });
+
+        col_minus.setCellFactory(
+                new Callback<TableColumn<Sales, Boolean>, TableCell<Sales, Boolean>>() {
+                    @Override
+                    public TableCell<Sales, Boolean> call(TableColumn<Sales, Boolean> p) {
+                        return new ButtonCell();
+                    }
+                });
+        counterTable.getColumns().add(col_minus);
     }
+
+    private class ButtonCell extends TableCell<Sales, Boolean> {
+        final Button cellButton = new Button("-");
+
+        ButtonCell(){
+            cellButton.setOnAction(new EventHandler<ActionEvent>(){
+                @Override
+                public void handle(ActionEvent t) {
+                    // do something when button clicked
+                    System.out.println("버튼 클릭!");
+                }
+            });
+        }
+        //Display button if the row is not empty
+        @Override
+        protected void updateItem(Boolean t, boolean empty) {
+            super.updateItem(t, empty);
+            if(!empty){
+                setGraphic(cellButton);
+            }
+        }
+    }
+
 
     // Dialog 제대로 만드셈. (안꺼지는문제 해결 및 결제 부분)
     public void clickCashBtn() {
@@ -453,4 +498,6 @@ public class PosController implements Initializable{
             e.printStackTrace();
         }
     }
+
+
 }
