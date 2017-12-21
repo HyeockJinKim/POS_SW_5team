@@ -28,7 +28,7 @@
                                     <TableColumn fx:id="calname" prefWidth="357.0" text="물품 명" />
                                     <TableColumn fx:id="calprice" minWidth="0.0" prefWidth="126.0" text="가격" />
                                     <TableColumn fx:id="calquan" prefWidth="106.0" text="수량" />
-                                    <TableColumn fx:id="calbutton"/>
+                                    <TableColumn fx:id="calbutton" />
                                 </columns>
                               </TableView>
                               <VBox prefHeight="560.0" prefWidth="279.0">
@@ -118,41 +118,46 @@
             <content>
                 <AnchorPane minHeight="0.0" minWidth="50.0">
                      <children>
-                        <TableView fx:id="salesRecordTable" prefHeight="771.0" prefWidth="693.0">
+                        <TableView fx:id="salesRecordTable" prefHeight="771.0" prefWidth="733.0">
                           <columns>
-                              <TableColumn minWidth="0.0" prefWidth="210.99999237060547" text="매출시각">
+                              <TableColumn minWidth="0.0" prefWidth="52.99998474121094" text="매출번호">
+                                  <cellValueFactory>
+                                      <PropertyValueFactory property="salesNumber" />
+                                  </cellValueFactory>
+                              </TableColumn>
+                              <TableColumn minWidth="0.0" prefWidth="210.0" text="매출시각">
                                   <cellValueFactory>
                                       <PropertyValueFactory property="salesTime" />
                                   </cellValueFactory>
                               </TableColumn>
-                              <TableColumn prefWidth="164.0" text="물품 명">
+                              <TableColumn prefWidth="173.0" text="물품 명">
                                   <cellValueFactory>
                                       <PropertyValueFactory property="productName" />
                                   </cellValueFactory>
                               </TableColumn>
-                              <TableColumn minWidth="0.0" prefWidth="99.0" text="가격">
+                              <TableColumn minWidth="0.0" prefWidth="92.0" text="가격">
                                   <cellValueFactory>
                                       <PropertyValueFactory property="productPrice" />
                                   </cellValueFactory>
                               </TableColumn>
-                              <TableColumn minWidth="0.0" prefWidth="53.0" text="수량">
+                              <TableColumn minWidth="0.0" prefWidth="48.0" text="수량">
                                   <cellValueFactory>
                                       <PropertyValueFactory property="productQuantity" />
                                   </cellValueFactory>
                               </TableColumn>
-                              <TableColumn minWidth="0.0" prefWidth="106.0" text="총금액">
+                              <TableColumn minWidth="0.0" prefWidth="104.0" text="총금액">
                                   <cellValueFactory>
                                       <PropertyValueFactory property="salesMoney" />
                                   </cellValueFactory>
                               </TableColumn>
-                              <TableColumn minWidth="0.0" prefWidth="59.0" text="결제수단">
+                              <TableColumn minWidth="0.0" prefWidth="52.0" text="결제수단">
                                   <cellValueFactory>
                                       <PropertyValueFactory property="isCash" />
                                   </cellValueFactory>
                               </TableColumn>
                           </columns>
                         </TableView>
-                        <Button fx:id="refund" layoutX="712.0" layoutY="500.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="156.0" text="환불" />
+                        <Button fx:id="refund" layoutX="752.0" layoutY="500.0" mnemonicParsing="false" prefHeight="54.0" prefWidth="116.0" text="환불" />
                      </children></AnchorPane>
             </content>
         </Tab>
